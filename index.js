@@ -19,5 +19,5 @@ app.use('/api/movies', moviesRoutes);
 
 
 app.listen(PORT, () => {
-console.log('Server is runnning')
+console.log('Server is runnning at port:', PORT)
 })
