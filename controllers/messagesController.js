@@ -64,10 +64,9 @@ export const updateMessage = async (req, res) => {
 };
 
 export const deleteMessage = async (req, res) => {
-  const { id } = req.params;
   try {
 
-    await Message.deleteOne({ _id: id });
+    await Message.deleteOne({ _id: req.params.id });
     return res.status(203).json({ message: "Message has been deleted" });
   } catch (error) {
     return res.status(500).json({ message: "Internal server error" });
