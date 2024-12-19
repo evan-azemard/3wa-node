@@ -10,7 +10,7 @@ let movies = [];
 
 
 //Récupérer les nouveaux films
-const getNewMovies = async (req, res) => {
+export const getNewMovies = async (req, res) => {
   try {
     const response = await axios.get(`${API_BASE_URL}/movie/now_playing`, {
       params: {
@@ -28,7 +28,7 @@ const getNewMovies = async (req, res) => {
 
 
 //Récupérer un film
-const getMoviesById = async (req, res) => {
+export const getMoviesById = async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -47,7 +47,7 @@ const getMoviesById = async (req, res) => {
 
 
 //Ajouter un nouveau film
-const postMovies = async (req, res) => {
+export const postMovies = async (req, res) => {
 
   let { title, genre } = req.body;
 
@@ -72,7 +72,7 @@ const postMovies = async (req, res) => {
 
 
 //Mettre à jour un film
-const updateMovie = async (req, res) => {
+export const updateMovie = async (req, res) => {
   let { id } = req.params
   let { title, genre } = req.body;
 
@@ -86,7 +86,7 @@ const updateMovie = async (req, res) => {
 
 
 //Supprimer un film
-const movieDelete = async (req, res) => {
+export const deleteMovie = async (req, res) => {
   let { id } = req.params
   const movieByID = movies.find(movie => movie.id === parseInt(id));
 
@@ -96,12 +96,3 @@ const movieDelete = async (req, res) => {
   return res.status(201).json(movieByID);
 
 }
-
-
-export {
-  getNewMovies,
-  getMoviesById,
-  postMovies,
-  updateMovie,
-  movieDelete,
-};
